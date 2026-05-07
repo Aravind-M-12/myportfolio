@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aravind Portfolio</title>
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            background:#05010f;
+            color:white;
+            overflow-x:hidden;
+        }
+
+        body::before{
+            content:'';
+            position:fixed;
+            width:500px;
+            height:500px;
+            background:rgba(217,70,239,0.25);
+            filter:blur(120px);
+            top:-100px;
+            right:-100px;
+            z-index:-1;
+        }
+
+        body::after{
+            content:'';
+            position:fixed;
+            width:400px;
+            height:400px;
+            background:rgba(59,130,246,0.18);
+            filter:blur(120px);
+            bottom:-100px;
+            left:-100px;
+            z-index:-1;
+        }
+
+        /* Navbar */
+
+        .navbar{
+            background:rgba(0,0,0,0.4);
+            backdrop-filter:blur(10px);
+        }
+
+        .navbar-brand{
+            color:#d946ef !important;
+            font-size:30px;
+            font-weight:700;
+        }
+
+        .nav-link{
+            color:white !important;
+            margin-left:20px;
+            transition:0.3s;
+        }
+
+        .nav-link:hover{
+            color:#d946ef !important;
+        }
+
+        /* Hero */
+
+        .hero{
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            text-align:center;
+        }
+
+        .profile-img{
+            width:220px;
+            height:220px;
+            border-radius:50%;
+            object-fit:cover;
+            border:5px solid #d946ef;
+            box-shadow:0 0 40px #d946ef;
+            animation:glow 3s infinite alternate;
+        }
+
+        @keyframes glow{
+
+            from{
+                box-shadow:0 0 20px #d946ef;
+            }
+
+            to{
+                box-shadow:0 0 50px #d946ef;
+            }
+
+        }
+
+        .hero h1{
+            font-size:85px;
+            font-weight:800;
+            margin-top:30px;
+        }
+
+        .hero span{
+            color:#d946ef;
+        }
+
+        .typing{
+            font-size:35px;
+            color:#ccc;
+            height:50px;
+            font-weight:600;
+        }
+
+        .hero p{
+            max-width:850px;
+            margin:auto;
+            margin-top:20px;
+            color:#bdbdbd;
+            line-height:1.8;
+        }
+
+        .hero-buttons{
+            margin-top:40px;
+        }
+
+        .hero-buttons a{
+            display:inline-block;
+            padding:14px 28px;
+            border-radius:40px;
+            margin:10px;
+            text-decoration:none;
+            transition:0.3s;
+        }
+
+        .btn1{
+            background:linear-gradient(45deg,#d946ef,#9333ea);
+            color:white;
+            box-shadow:0 0 20px #d946ef;
+        }
+
+        .btn2{
+            border:2px solid #d946ef;
+            color:white;
+        }
+
+        .btn1:hover,
+        .btn2:hover{
+            transform:translateY(-5px);
+        }
+
+        /* Sections */
+
+        section{
+            padding:100px 0;
+        }
+
+        .section-title{
+            text-align:center;
+            font-size:45px;
+            margin-bottom:60px;
+            color:#d946ef;
+            font-weight:700;
+        }
+
+        .glass-card{
+            background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.1);
+            border-radius:20px;
+            padding:30px;
+            backdrop-filter:blur(10px);
+            transition:0.4s;
+            height:100%;
+        }
+
+        .glass-card:hover{
+            transform:translateY(-10px);
+            box-shadow:0 0 25px rgba(217,70,239,0.4);
+        }
+
+        .skill-box{
+            text-align:center;
+        }
+
+        .skill-box i{
+            font-size:50px;
+            color:#d946ef;
+            margin-bottom:20px;
+        }
+
+        .project-title{
+            color:#d946ef;
+            margin-bottom:15px;
+        }
+
+        .form-control{
+            background:#111 !important;
+            border:1px solid #444 !important;
+            color:white !important;
+        }
+
+        .form-control:focus{
+            box-shadow:none;
+            border-color:#d946ef !important;
+        }
+
+        .modal-content{
+            background:#0f0f0f;
+            border:1px solid #444;
+        }
+
+        footer{
+            text-align:center;
+            padding:30px;
+            border-top:1px solid rgba(255,255,255,0.1);
+            color:#aaa;
+        }
+
+        @media(max-width:991px){
+
+            .hero h1{
+                font-size:50px;
+            }
+
+            .typing{
+                font-size:24px;
+            }
+
+            .profile-img{
+                width:180px;
+                height:180px;
+            }
+
+        }
+
+        @media(max-width:576px){
+
+            .hero h1{
+                font-size:38px;
+            }
+
+            .typing{
+                font-size:20px;
+            }
+
+            .section-title{
+                font-size:35px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+                Aravind M
+            </a>
+
+            <button class="navbar-toggler"
+                data-bs-toggle="collapse"
+                data-bs-target="#navMenu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse"
+                id="navMenu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#internship">Internship</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#certificates">Certificates</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <section class="hero" id="home">
+
+        <div class="container">
+
+            <img src="./aravind.jpeg"
+                class="profile-img">
+
+            <h1>
+                Aravind <span>M</span>
+            </h1>
+
+            <div class="typing">
+                <span id="typing-text"></span>
+            </div>
+
+            <p>
+
+                Motivated and quick-learning Computer Science Engineering student passionate about Full Stack Development, responsive web applications and modern UI design.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#projects"
+                    class="btn1">
+
+                    <i class="fa-solid fa-code"></i>
+                    View Projects
+
+                </a>
+
+                <a href="./Aravind-resume12.pdf"
+                    target="_blank"
+                    class="btn1">
+
+                    <i class="fa-solid fa-eye"></i>
+                    View Resume
+
+                </a>
+
+                <a href="./Aravind-resume12.pdf"
+                    download
+                    class="btn2">
+
+                    <i class="fa-solid fa-download"></i>
+                    Download Resume
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- About -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                About Me
+            </h2>
+
+            <div class="glass-card">
+
+                <p>
+
+                    I am currently pursuing BE Computer Science and Engineering at Stella Mary’s College of Engineering.
+
+                </p>
+
+                <p>
+
+                    I have strong interest in Java Full Stack Development, responsive web design, frontend technologies and problem solving.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Skills -->
+
+    <section id="skills">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Skills
+            </h2>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="glass-card skill-box">
+                        <i class="fa-brands fa-java"></i>
+                        <h4>Java</h4>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card skill-box">
+                        <i class="fa-brands fa-html5"></i>
+                        <h4>HTML5</h4>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card skill-box">
+                        <i class="fa-brands fa-css3-alt"></i>
+                        <h4>CSS3</h4>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card skill-box">
+                        <i class="fa-brands fa-bootstrap"></i>
+                        <h4>Bootstrap</h4>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card skill-box">
+                        <i class="fa-brands fa-js"></i>
+                        <h4>JavaScript</h4>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card skill-box">
+                        <i class="fa-brands fa-github"></i>
+                        <h4>GitHub</h4>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Projects -->
+
+    <section id="projects">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Projects
+            </h2>
+
+            <div class="row g-4">
+
+                <div class="col-lg-6">
+
+                    <div class="glass-card">
+
+                        <h4 class="project-title">
+                            EB Bill Calculator
+                        </h4>
+
+                        <p>
+                            Electricity bill calculator using HTML, CSS, JavaScript and Bootstrap.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="glass-card">
+
+                        <h4 class="project-title">
+                            E-Commerce Website
+                        </h4>
+
+                        <p>
+                            Responsive shopping website with interactive user interface.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="glass-card">
+
+                        <h4 class="project-title">
+                            Personal Portfolio
+                        </h4>
+
+                        <p>
+                            Responsive personal portfolio website using HTML CSS Bootstrap JavaScript.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="glass-card">
+
+                        <h4 class="project-title">
+                            To-Do List App
+                        </h4>
+
+                        <p>
+                            Task management application with add edit and delete functionality.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Internship -->
+
+    <section id="internship">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Internship
+            </h2>
+
+            <div class="row g-4">
+
+                <div class="col-lg-6">
+
+                    <div class="glass-card">
+
+                        <h4 class="project-title">
+                            Java Development Internship
+                        </h4>
+
+                        <p>
+                            JClick Solution, Nagercoil
+                        </p>
+
+                        <button class="btn btn-outline-light mt-3"
+                            data-bs-toggle="modal"
+                            data-bs-target="#intern1">
+
+                            View Certificate
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="glass-card">
+
+                        <h4 class="project-title">
+                            Web Development Internship
+                        </h4>
+
+                        <p>
+                            CAZ BRAIN PVT LTD, Bangalore
+                        </p>
+
+                        <button class="btn btn-outline-light mt-3"
+                            data-bs-toggle="modal"
+                            data-bs-target="#intern2" >
+
+                            View Certificate
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Certificates -->
+
+    <section id="certificates">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Certificates
+            </h2>
+
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="glass-card text-center">
+
+                        <i class="fa-solid fa-award fa-3x mb-4 text-info"></i>
+
+                        <h5>
+                            Building and Deploying Web Apps
+                        </h5>
+
+                        <button class="btn btn-outline-light mt-3"
+                            data-bs-toggle="modal"
+                            data-bs-target="#cert1">
+
+                            View Certificate
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="glass-card text-center">
+
+                        <i class="fa-solid fa-code fa-3x mb-4 text-warning"></i>
+
+                        <h5>
+                            Web Development
+                        </h5>
+
+                        <button class="btn btn-outline-light mt-3"
+                            data-bs-toggle="modal"
+                            data-bs-target="#cert2">
+
+                            View Certificate
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="glass-card text-center">
+
+                        <i class="fa-solid fa-chart-column fa-3x mb-4 text-success"></i>
+
+                        <h5>
+                            Power BI
+                        </h5>
+
+                        <button class="btn btn-outline-light mt-3"
+                            data-bs-toggle="modal"
+                            data-bs-target="#cert3">
+
+                            View Certificate
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="glass-card text-center">
+
+                        <i class="fa-solid fa-user-graduate fa-3x mb-4 text-danger"></i>
+
+                        <h5>
+                            New Age Career Skill
+                        </h5>
+
+                        <button class="btn btn-outline-light mt-3"
+                            data-bs-toggle="modal"
+                            data-bs-target="#cert4">
+
+                            View Certificate
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Contact -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Contact Me
+            </h2>
+
+            <div class="row justify-content-center">
+
+                <div class="col-lg-8">
+
+                    <div class="glass-card">
+
+                        <form action="https://formsubmit.co/aravindmehala2004@gmail.com"
+                            method="POST">
+
+                            <input type="hidden"
+                                name="_captcha"
+                                value="false">
+
+                            <input type="hidden"
+                                name="_subject"
+                                value="Portfolio Message">
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Name
+                                </label>
+
+                                <input type="text"
+                                    class="form-control"
+                                    name="name"
+                                    required>
+
+                            </div>
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Email
+                                </label>
+
+                                <input type="email"
+                                    class="form-control"
+                                    name="email"
+                                    required>
+
+                            </div>
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Message
+                                </label>
+
+                                <textarea rows="5"
+                                    class="form-control"
+                                    name="message"
+                                    required></textarea>
+
+                            </div>
+
+                            <div class="text-center">
+
+                                <button type="submit"
+                                    class="btn1 border-0 px-5 py-3">
+
+                                    <i class="fa-solid fa-paper-plane"></i>
+
+                                    Submit Message
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        © 2026 Aravind M | Full Stack Developer
+
+    </footer>
+
+    <!-- Internship Modals -->
+
+    <div class="modal fade" id="intern1">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-body text-center">
+
+                    <img src="./intern1.jpeg"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="intern2">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-body text-center">
+
+                    <img src="./intern2.jpeg"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Certificate Modals -->
+
+    <div class="modal fade" id="cert1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img src="./cert1.jpeg" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cert2">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img src="./cert2.jpeg" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cert3">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img src="./cert3.jpeg" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cert4">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img src="./cert4.jpeg" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Typing Animation -->
+
+    <script>
+
+        const text = [
+
+            "Full Stack Developer",
+            "Java Developer",
+            "Frontend Developer",
+            "Web Designer"
+
+        ];
+
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type(){
+
+            if(count === text.length){
+                count = 0;
+            }
+
+            currentText = text[count];
+
+            letter = currentText.slice(0, ++index);
+
+            document.getElementById("typing-text").textContent = letter;
+
+            if(letter.length === currentText.length){
+
+                count++;
+                index = 0;
+
+                setTimeout(type,1500);
+
+            }
+
+            else{
+
+                setTimeout(type,100);
+
+            }
+
+        })();
+
+    </script>
+
+</body>
+
+</html>
